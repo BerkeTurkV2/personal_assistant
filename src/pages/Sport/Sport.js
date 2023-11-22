@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Image, TextInput, Alert } from "react-native";
 import { ThemedButton } from 'react-native-really-awesome-button';
 import Icon from "react-native-vector-icons/Fontisto";
 import SportInput from "../../components/SportInput/SportInput";
+
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import styles from "./SportStyles";
 
@@ -26,15 +28,56 @@ function Sport() {
     const [enteredYürüyüs, setEnteredYürüyüs] = useState("");
     const [dailyTotalYürüyüs, setDailyTotalYürüyüs] = useState(0);
 
+    useEffect(() => {
+        const retrieveData = async () => {
+            try {
+                const storedTotalSinav = await AsyncStorage.getItem('dailyTotalSinav');
+                if (storedTotalSinav !== null) {
+                    setDailyTotalSinav(parseInt(storedTotalSinav));
+                }
+                const storedTotalMekik = await AsyncStorage.getItem('dailyTotalMekik');
+                if (storedTotalMekik !== null) {
+                    setDailyTotalMekik(parseInt(storedTotalMekik));
+                }
+                const storedTotalSquat = await AsyncStorage.getItem('dailyTotalSquat');
+                if (storedTotalSquat !== null) {
+                    setDailyTotalSquat(parseInt(storedTotalSquat));
+                }
+                const storedTotalAgirlik = await AsyncStorage.getItem('dailyTotalAgirlik');
+                if (storedTotalAgirlik !== null) {
+                    setDailyTotalAgirlik(parseInt(storedTotalAgirlik));
+                }
+                const storedTotalPlank = await AsyncStorage.getItem('dailyTotalPlank');
+                if (storedTotalPlank !== null) {
+                    setDailyTotalPlank(parseInt(storedTotalPlank));
+                }
+                const storedTotalYürüyüs = await AsyncStorage.getItem('dailyTotalYürüyüs');
+                if (storedTotalYürüyüs !== null) {
+                    setDailyTotalYürüyüs(parseInt(storedTotalYürüyüs));
+                }
+            } catch (error) {
+                console.error('AsyncStorage hatası:', error);
+            }
+        };
+    
+        retrieveData();
+    }, []);
+
     const handleSinavInput = (input) => {
         setEnteredSinav(input);
     };
 
-    const handleAdditionSinav = () => {
+    const handleAdditionSinav = async () => {
         const number = parseInt(enteredSinav);
         if (!isNaN(number)) {
             setDailyTotalSinav(dailyTotalSinav + number);
             setEnteredSinav('');
+
+            try {
+                await AsyncStorage.setItem('dailyTotalSinav', JSON.stringify(dailyTotalSinav + number));
+            } catch (error) {
+                console.error('AsyncStorage hatası:', error);
+            }
         } else {
             Alert.alert('Lütfen geçerli bir sayi girin.');
         }
@@ -44,11 +87,17 @@ function Sport() {
         setEnteredMekik(input);
     };
 
-    const handleAdditionMekik = () => {
+    const handleAdditionMekik = async () => {
         const number = parseInt(enteredMekik);
         if (!isNaN(number)) {
             setDailyTotalMekik(dailyTotalMekik + number);
             setEnteredMekik('');
+
+            try {
+                await AsyncStorage.setItem('dailyTotalMekik', JSON.stringify(dailyTotalMekik + number));
+            } catch (error) {
+                console.error('AsyncStorage hatası:', error);
+            }
         } else {
             Alert.alert('Lütfen geçerli bir sayi girin.');
         }
@@ -58,11 +107,17 @@ function Sport() {
         setEnteredSquat(input);
     };
 
-    const handleAdditionSquat = () => {
+    const handleAdditionSquat = async () => {
         const number = parseInt(enteredSquat);
         if (!isNaN(number)) {
             setDailyTotalSquat(dailyTotalSquat + number);
             setEnteredSquat('');
+
+            try {
+                await AsyncStorage.setItem('dailyTotalSquat', JSON.stringify(dailyTotalSquat + number));
+            } catch (error) {
+                console.error('AsyncStorage hatası:', error);
+            }
         } else {
             Alert.alert('Lütfen geçerli bir sayi girin.');
         }
@@ -72,11 +127,17 @@ function Sport() {
         setEnteredAgirlik(input);
     };
 
-    const handleAdditionAgirlik = () => {
+    const handleAdditionAgirlik = async () => {
         const number = parseInt(enteredAgirlik);
         if (!isNaN(number)) {
             setDailyTotalAgirlik(dailyTotalAgirlik + number);
             setEnteredAgirlik('');
+
+            try {
+                await AsyncStorage.setItem('dailyTotalAgirlik', JSON.stringify(dailyTotalAgirlik + number));
+            } catch (error) {
+                console.error('AsyncStorage hatası:', error);
+            }
         } else {
             Alert.alert('Lütfen geçerli bir sayi girin.');
         }
@@ -86,11 +147,17 @@ function Sport() {
         setEnteredPlank(input);
     };
 
-    const handleAdditionPlank = () => {
+    const handleAdditionPlank = async () => {
         const number = parseInt(enteredPlank);
         if (!isNaN(number)) {
             setDailyTotalPlank(dailyTotalPlank + number);
             setEnteredPlank('');
+
+            try {
+                await AsyncStorage.setItem('dailyTotalPlank', JSON.stringify(dailyTotalPlank + number));
+            } catch (error) {
+                console.error('AsyncStorage hatası:', error);
+            }
         } else {
             Alert.alert('Lütfen geçerli bir sayi girin.');
         }
@@ -100,11 +167,17 @@ function Sport() {
         setEnteredYürüyüs(input);
     };
 
-    const handleAdditionYürüyüs = () => {
+    const handleAdditionYürüyüs = async () => {
         const number = parseInt(enteredYürüyüs);
         if (!isNaN(number)) {
             setDailyTotalYürüyüs(dailyTotalYürüyüs + number);
             setEnteredYürüyüs('');
+
+            try {
+                await AsyncStorage.setItem('dailyTotalYürüyüs', JSON.stringify(dailyTotalYürüyüs + number));
+            } catch (error) {
+                console.error('AsyncStorage hatası:', error);
+            }
         } else {
             Alert.alert('Lütfen geçerli bir sayi girin.');
         }
@@ -120,7 +193,7 @@ function Sport() {
         <View style={styles.container}>
             <View style={styles.topBox}>
                 <View style={styles.topDate}>
-                    <Icon style={styles.icon} name={"date"} size={18} color={"black"} />
+                    <Icon style={styles.icon} name={"date"} size={14} color={"black"} />
                     <Text style={styles.date}>{dateFormat}</Text>
                 </View>
                 <View style={styles.topTitles} >

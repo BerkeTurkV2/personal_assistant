@@ -34,7 +34,7 @@ export default StyleSheet.create({
         borderWidth: 0.4,
     },
     date: {
-        fontSize: 16,
+        fontSize: 14,
         fontWeight: "bold"
     },
     bottomBox: {
