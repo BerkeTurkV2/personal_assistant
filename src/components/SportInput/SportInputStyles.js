@@ -9,7 +9,7 @@ export default StyleSheet.create({
     },
     sportTitle: {
         flex: 1,
-        marginHorizontal: 14,
+        marginHorizontal: 4,
         fontWeight: "bold",
         fontSize: 14,
         color: "#34495e",
@@ -27,13 +27,18 @@ export default StyleSheet.create({
     sportTotal: {
         flex: 1,
         textAlign: "center",
-        paddingLeft: 10,
+        paddingLeft: 0,
     },
     sportAmount: {
         flex:1, 
         flexDirection:"row", 
         alignItems: "center", 
         justifyContent: "center", 
-        marginHorizontal: 12,
+        marginHorizontal: 16,
     },
+    image: {
+        //flex:1,
+        height: 40,
+        width: 50,
+    }
 })

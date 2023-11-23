@@ -9,7 +9,7 @@ export default StyleSheet.create({
         padding: 10,
     },
     topBox: {
-        //flex: 1,
+        flex: 4,
         backgroundColor: "#ecf0f1"
     },
     topDate: {
@@ -29,6 +29,11 @@ export default StyleSheet.create({
     bottomDate: {
         textDecorationLine: "underline",
         paddingRight: 40,
+        color: "white",
+        fontWeight: "bold",
+    },
+    bottomNames: {
+        color: "white"
     },
     separotor: {
         borderWidth: 0.4,
@@ -42,27 +47,43 @@ export default StyleSheet.create({
         fontWeight: "bold"
     },
     bottomBox: {
-        backgroundColor: "#c0cdd1"
+        flex: 1.4,
+        backgroundColor: "#34495e" //#c0cdd1
     },
     bottomTitles: {
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingHorizontal: 10,
         padding: 10,
     },
     button: {
         alignSelf: "center",
-        margin: 10
+        margin: 10,
     },
     bottomDatas: {
         flexDirection: "row",
+        paddingVertical: 5,
     },
     bottomDataNames: {
         flex:1,
         paddingLeft: 5,
+        color: "black",
+    },
+    totalName: {
+        flex:1,
+        color: "white",
+        fontWeight: "bold",
+    },
+    totalDatas: {
+        flex:1,
+        paddingLeft: 17,
+        color: "white",
     },
     totalBox: {
-        backgroundColor: "#869495",
-        flexDirection: "row"
+        flex: 0.4,
+        backgroundColor: "#005073",
+    },
+    image: {
+        height: 50,
+        width: 50,
     }
 })
