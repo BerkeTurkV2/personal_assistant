@@ -26,12 +26,16 @@ export default StyleSheet.create({
     topNames: {
         textDecorationLine: "underline",
     },
-    bottomTitle: {
+    bottomDate: {
         textDecorationLine: "underline",
-        paddingRight: 20,
+        paddingRight: 40,
     },
     separotor: {
         borderWidth: 0.4,
+    },
+    separotor2: {
+        borderBottomWidth: 0.4,
+        marginTop: 4,
     },
     date: {
         fontSize: 14,
@@ -43,11 +47,22 @@ export default StyleSheet.create({
     bottomTitles: {
         flexDirection: "row",
         justifyContent: "space-between",
-        paddingHorizontal: 20,
+        paddingHorizontal: 10,
         padding: 10,
     },
     button: {
         alignSelf: "center",
         margin: 10
+    },
+    bottomDatas: {
+        flexDirection: "row",
+    },
+    bottomDataNames: {
+        flex:1,
+        paddingLeft: 5,
+    },
+    totalBox: {
+        backgroundColor: "#869495",
+        flexDirection: "row"
     }
 })
